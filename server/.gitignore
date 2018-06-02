@@ -8,4 +8,4 @@ build
 .babel-cache
 lib
 .idea/vcs.xml
-
+herokuCreds.txt
