@@ -1,13 +1,12 @@
 node_modules
 npm-debug.log
 package-lock.json
+config/dev.js
 
 dist
 build
 .idea/*
 .babel-cache
 lib
-.idea/vcs.xml
-herokuCreds.txt
-keys.js
+.idea/vcs.xmls
 .DS_Store

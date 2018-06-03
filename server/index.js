@@ -26,7 +26,16 @@ Consult TechStack.xml in draw.io for more info.
 */
 const app = express();
 
-// Enabling cookie for the app
+/*
+* Middlewares do preprocessing of the incoming request before they are sent off to different route handlers.
+* They are great location to locate some logic that are common to many different route handlers.
+* We are using middlewares for cookie authentication.
+*/
+// Middlewares Start
+/* Enabling cookie for the app.
+* cookieSession extracts cookie data and assigns it to req.session. (In this, one of the property is passport and inside it is the user id)
+* passport then extracts cookie data from req.session object
+*/
 app.use(
   cookieSession({ // accepts config object
     maxAge: 30 * 24 * 60 * 60 * 1000, // how long cookie can exist in the browser before it automatically expires (here 30 days)
@@ -36,6 +45,7 @@ app.use(
 // connecting session to passport
 app.use(passport.initialize());
 app.use(passport.session());
+// Middlewares end
 
 require('./routes/authRoutes')(app);
 

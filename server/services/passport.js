@@ -28,8 +28,9 @@ passport.use(
   new GoogleStrategy({
       clientID: keys.googleClientID,
       clientSecret: keys.googleClientSecret,
-      callbackURL: '/auth/google/callback'
-    },
+      callbackURL: '/auth/google/callback',
+      proxy: true // By default Strategy assumes that if our request from browser ever went through any kind of proxy, then request could no longer be 'https'
+    },            // In our case it goes through Heroku Proxy. So, by setting proxy to true, we tell Strategy that if our request goes through any proxy, trust the proxy and deal with it.
     (accessToken, refreshToken, profile, done) => {
       User.findOne({ googleId: profile.id })
         .then(existingUser => {
