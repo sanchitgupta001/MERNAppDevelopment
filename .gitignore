@@ -9,4 +9,5 @@ build
 lib
 .idea/vcs.xml
 herokuCreds.txt
-
+keys.js
+.DS_Store
