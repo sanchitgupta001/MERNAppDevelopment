@@ -7,7 +7,7 @@ This repository contains basic app development using MERN stack.
 
 We are using passport.js for Google OAuth implementation.
 Currently, only **Google OAuth** is implemented but later other OAuths can also be implemented.
-For Mongo implementation, we are using **Mongoose*** library.
+For Mongo implementation, we are using **Mongoose** library.
 For **MongoDB**, we are using database created at mlab.com.
 
 To get started, you just need to do **npm install** to install dependencies for the project.
