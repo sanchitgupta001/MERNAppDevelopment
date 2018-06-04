@@ -22,4 +22,12 @@ So, every time, it takes session id, looksup all relevant info from a 'session s
 Also, for this we need to set the relevant session store.
 But advantage of this is that we can hold arbitrary amounts of data unlike cookie-session where we have a limit of 4KB.
 
+To use front-end react server and express server concurrently, we are using **concurrently** npm library.
+**proxy** is required in package.json for client(ReactJS stuff) for development mode to switch to express server for backend stuff on redirect.
+There are basically 2 reasons we using this proxy approach for our development Environment:
+1. When we are using cookies, for single request (for example) to localhost:3000, cookies will be used by the browser but when we are making request to
+localhost:5000, Browser(by default) does not include cookies.
+2. CORS(Cross-origin Resource Sharing): This issue will not be there when we are using single request server (for example: localhost:3000 here). But when we are redirecting to different domain
+(like localhost:5000), browser sometimes give error for CORS request.
+
 

@@ -9,5 +9,3 @@ build
 .babel-cache
 lib
 .idea/vcs.xml
-.DS_Store
-yarn.lock
