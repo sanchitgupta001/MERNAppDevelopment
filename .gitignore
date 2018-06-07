@@ -11,3 +11,4 @@ lib
 .idea/vcs.xml
 .DS_Store
 yarn.lock
+herokuCreds.txt

@@ -31,18 +31,15 @@ passport.use(
       callbackURL: '/auth/google/callback',
       proxy: true // By default Strategy assumes that if our request from browser ever went through any kind of proxy, then request could no longer be 'https'
     },            // In our case it goes through Heroku Proxy. So, by setting proxy to true, we tell Strategy that if our request goes through any proxy, trust the proxy and deal with it.
-    (accessToken, refreshToken, profile, done) => {
-      User.findOne({ googleId: profile.id })
-        .then(existingUser => {
-          if (existingUser) {
-            // we already have record with given profile ID
-            done(null, existingUser); // first arg: errorObject, second arg: user record
-          } else {
-            // we don't have record associated with this profile ID. Create New User
-            new User({ googleId: profile.id }) // This will create a new Model Instance and save into the mongoDB
-              .save()
-              .then(user => done(null, user));
-          }
-        });
+    async (accessToken, refreshToken, profile, done) => {
+      const existingUser = await User.findOne({ googleId: profile.id });
+      if (existingUser) {
+        // we already have record with given profile ID
+        return done(null, existingUser); // first arg: errorObject, second arg: user record
+      }
+      // we don't have record associated with this profile ID. Create New User
+      const user = await new User({ googleId: profile.id }).save(); // This will create a new Model Instance and save into the mongoDB
+      done(null, user);
+
     })
 );
