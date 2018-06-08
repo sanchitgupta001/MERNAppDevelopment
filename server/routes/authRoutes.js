@@ -13,12 +13,15 @@ module.exports = app => {
 
   app.get(
     '/auth/google/callback',
-    passport.authenticate('google')
+    passport.authenticate('google'),
+    (req, res) => {
+      res.redirect('/surveys');
+    }
   );
 
   app.get('/api/logout', (req, res) => {
     req.logout();
-    res.send(req.user); // The instance we call logout. req.user is destroyed by passport bcoz we are no longer signed in.
+    res.redirect('/');
   });
 
   app.get('/api/current_user', (req, res) => {
