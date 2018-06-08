@@ -1,9 +1,13 @@
 # MERN App Development
 This repository contains basic app development using MERN stack.
 
-**Node**: Javascript runtime used to execute code outside of the browser.
+**Mongo DB**: MongoDB is an open-source document database and leading NoSQL database. MongoDB is written in C++.
 
 **Express**: Library that runs in the Node runtime. Has helpers to make dealing with HTTP traffic easier.
+
+**React JS**: React is a front-end library developed by Facebook. It is used for handling the view layer for web and mobile apps. ReactJS allows us to create reusable UI components.
+
+**Node**: Javascript runtime used to execute code outside of the browser.
 
 We are using passport.js for Google OAuth implementation.
 Currently, only **Google OAuth** is implemented but later other OAuths can also be implemented.
@@ -29,5 +33,9 @@ There are basically 2 reasons we using this proxy approach for our development E
 localhost:5000, Browser(by default) does not include cookies.
 2. CORS(Cross-origin Resource Sharing): This issue will not be there when we are using single request server (for example: localhost:3000 here). But when we are redirecting to different domain
 (like localhost:5000), browser sometimes give error for CORS request.
+
+We are using **redux-thunk** npm library. Redux-Thunk is the most popular middleware used to handle asynchronous actions in Redux. 
+
+Also, for styling and css stuff, we are using **materialize**. For more info regarding materialize, you can visit: https://materializecss.com/
 
 
