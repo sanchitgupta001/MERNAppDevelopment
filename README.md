@@ -34,8 +34,9 @@ localhost:5000, Browser(by default) does not include cookies.
 2. CORS(Cross-origin Resource Sharing): This issue will not be there when we are using single request server (for example: localhost:3000 here). But when we are redirecting to different domain
 (like localhost:5000), browser sometimes give error for CORS request.
 
-We are using **redux-thunk** npm library. Redux-Thunk is the most popular middleware used to handle asynchronous actions in Redux. 
+We are using **redux-thunk** npm library. Redux-Thunk is the most popular middleware used to handle asynchronous actions in Redux.
 
 Also, for styling and css stuff, we are using **materialize**. For more info regarding materialize, you can visit: https://materializecss.com/
 
+For Billing feature implementation using credit/debit cards, we have used **stripe** module in the backend and **react-stripe-checkout** module on the react side.
 
