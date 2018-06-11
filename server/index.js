@@ -5,7 +5,7 @@ const express = require('express'); // 'require': Common JS module format for no
 const mongoose = require('mongoose');
 const cookieSession = require('cookie-session');
 const passport = require('passport');
-
+const bodyParser = require('body-parser');
 const keys = require('./config/keys');
 require('./models/user'); // Note: Here, order of the require statement matters
 require('./services/passport'); // It is not returning anything. So, we only want it to execute it.
@@ -32,6 +32,8 @@ const app = express();
 * We are using middlewares for cookie authentication.
 */
 // Middlewares Start
+app.use(bodyParser.json()); // Parse incoming request bodies (for POST, PUT or PATCH requests) in a middleware before your handlers, available under the 'req.body' property.
+
 /* Enabling cookie for the app.
 * cookieSession extracts cookie data and assigns it to req.session. (In this, one of the property is passport and inside it is the user id)
 * passport then extracts cookie data from req.session object
@@ -48,6 +50,7 @@ app.use(passport.session());
 // Middlewares end
 
 require('./routes/authRoutes')(app);
+require('./routes/billingRoutes')(app);
 
 // Dynamic Port Binding
 const PORT = process.env.PORT || 5000; // Heroku has the ability to inject Environment variables (for current environment on which NODE is running)
