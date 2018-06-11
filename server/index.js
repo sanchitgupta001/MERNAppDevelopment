@@ -52,6 +52,19 @@ app.use(passport.session());
 require('./routes/authRoutes')(app);
 require('./routes/billingRoutes')(app);
 
+// Handling React build (Front-End)
+if (process.env.NODE_ENV === 'production') { // Note: Here, order of statements matters
+  // Express will serve up production assets like main.js file or main.css file
+  app.use(express.static('client/build'));
+
+  // Express will serve up index.html file if it doesn't recognize the routes
+  // This will be executed after checking request match for route handlers (authRoutes, billingRoutes) and after checking if no file matches in client/build repo what the request is looking for.
+  const path = require('path');
+  app.get('*', (req, res) => {
+    res.sendFile(path.resolve(__dirname, 'client', 'build', 'index.html'));
+  });
+}
+
 // Dynamic Port Binding
 const PORT = process.env.PORT || 5000; // Heroku has the ability to inject Environment variables (for current environment on which NODE is running)
 
