@@ -7,7 +7,8 @@ const cookieSession = require('cookie-session');
 const passport = require('passport');
 const bodyParser = require('body-parser');
 const keys = require('./config/keys');
-require('./models/user'); // Note: Here, order of the require statement matters
+require('./models/User'); // Note: Here, order of the require statement matters
+require('./models/Survey');
 require('./services/passport'); // It is not returning anything. So, we only want it to execute it.
 
 // Connecting mongoose to mongodb on mlab.com
@@ -31,7 +32,9 @@ const app = express();
 * They are great location to locate some logic that are common to many different route handlers.
 * We are using middlewares for cookie authentication.
 */
-// Middlewares Start
+
+/******                           Middlewares Start                   ******/
+
 app.use(bodyParser.json()); // Parse incoming request bodies (for POST, PUT or PATCH requests) in a middleware before your handlers, available under the 'req.body' property.
 
 /* Enabling cookie for the app.
@@ -41,16 +44,18 @@ app.use(bodyParser.json()); // Parse incoming request bodies (for POST, PUT or P
 app.use(
   cookieSession({ // accepts config object
     maxAge: 30 * 24 * 60 * 60 * 1000, // how long cookie can exist in the browser before it automatically expires (here 30 days)
-    keys: [keys.cookieKey] // Key to encrypt the cookie (can be multiple)
-,  })
+    keys: [keys.cookieKey], // Key to encrypt the cookie (can be multiple)
+  })
 );
 // connecting session to passport
 app.use(passport.initialize());
 app.use(passport.session());
-// Middlewares end
+
+/******                           Middlewares End                   ******/
 
 require('./routes/authRoutes')(app);
 require('./routes/billingRoutes')(app);
+require('./routes/surveyRoutes')(app);
 
 // Handling React build (Front-End)
 if (process.env.NODE_ENV === 'production') { // Note: Here, order of statements matters

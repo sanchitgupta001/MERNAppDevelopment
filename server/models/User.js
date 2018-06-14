@@ -11,4 +11,5 @@ const userSchema = new Schema({
 
 // Creating 'Model Class' in mongoose
 // Note: Here, we are passing 2 arguments to mongoose.model. That means, we are trying to load something into mongoose
+// Args: Model Class, Schema
 mongoose.model('users', userSchema);
