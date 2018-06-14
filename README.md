@@ -40,3 +40,4 @@ Also, for styling and css stuff, we are using **materialize**. For more info reg
 
 For Billing feature implementation using credit/debit cards, we have used **stripe** module in the backend and **react-stripe-checkout** module on the react side.
 
+For Email service, we are using Send Grid. For more info, visit http://sendgrid.com/
