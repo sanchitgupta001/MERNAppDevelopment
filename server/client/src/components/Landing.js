@@ -7,9 +7,8 @@ const Landing = () => {
   return (
     <div style={{ textAlign: 'center'}}>
       <h1>
-        MERN App!
+        Email Surveys!
       </h1>
-      Creating My First MERN based Web Application
     </div>
   );
 };

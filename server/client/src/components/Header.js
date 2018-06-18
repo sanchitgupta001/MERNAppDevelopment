@@ -38,7 +38,7 @@ class Header extends React.Component {
             className="left brand-logo"
             style={{margin: '0 10px'}}
           >
-            MERN App
+            Email Surveys
           </Link>
           <ul className="right">
             {this.renderContent()}

@@ -12,12 +12,8 @@ require('./models/Survey');
 require('./services/passport'); // It is not returning anything. So, we only want it to execute it.
 
 // Connecting mongoose to mongodb on mlab.com
-mongoose.connect(keys.mongoURI, (err, db) => {
-  if (err) {
-    console.log('err', err);
-  }
-  else { console.log('Connected to MongoDB')}
-});
+mongoose.Promise = global.Promise;
+mongoose.connect(keys.mongoURI);
 
 /*
 By calling 'express' as a function, it generates a new application that represents a running express app.
